@@ -9,6 +9,7 @@ const placesSlice = createSlice({
       const newPlace = {
         id: new Date().toString(),
         title: actions.payload.placeData.title,
+        imageUri: actions.payload.placeData.image,
       };
 
       state.places.push(newPlace);
