@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Places from "../models/places";
 
 const placesSlice = createSlice({
   name: "places",
@@ -7,12 +6,21 @@ const placesSlice = createSlice({
   reducers: {
     addPlace(state, actions) {
       const newPlace = {
-        id: new Date().toString(),
+        id: actions.payload.placeData.id.toString(),
         title: actions.payload.placeData.title,
-        imageUri: actions.payload.placeData.image,
+        image: actions.payload.placeData.image,
       };
 
       state.places.push(newPlace);
+    },
+    setPlaces(state, actions) {
+      state.places = actions.payload.places.map((pl) => {
+        return {
+          id: pl.id.toString(),
+          title: pl.title,
+          image: pl.image,
+        };
+      });
     },
   },
 });

@@ -6,4 +6,10 @@ export const store = configureStore({
   reducer: {
     places: placesSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      immutableCheck: {
+        ignoredPaths: ["ignoredPath", "ignoredNested.one", "ignoredNested.two"],
+      },
+    }),
 });

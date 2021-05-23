@@ -9,7 +9,8 @@ import {
 } from "react-native";
 import Colors from "../constants/Colors";
 import { useDispatch } from "react-redux";
-import { placesActions } from "../store/places-slice";
+//import { placesActions } from "../store/places-slice";
+import { addPlace } from "../store/places-actions";
 import ImagePicker from "../components/ImagePicker";
 
 const NewPlaceScreen = (props) => {
@@ -23,9 +24,7 @@ const NewPlaceScreen = (props) => {
   };
 
   const savePlaceHandler = () => {
-    dispatch(
-      placesActions.addPlace({ placeData: { title: titleValue, image: image } })
-    );
+    dispatch(addPlace(titleValue, image));
     props.navigation.goBack();
   };
 
